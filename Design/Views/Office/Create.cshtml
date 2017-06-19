@@ -1,0 +1,58 @@
+﻿@model  Design.ViewModel.OfficeViewModel
+
+@{
+    ViewBag.Title = "Create Office";
+}
+
+<h2>@Domain.Resources.Messages.Label_Create</h2>
+
+<form method="post">
+
+    <div class="form-group">
+        @Html.LabelFor(AllModel => AllModel.objoffice.OfficeCode)
+        @Html.EditorFor(AllModel => AllModel.objoffice.OfficeCode, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(AllModel => AllModel.objoffice.OfficeCode)
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(n => n.objoffice.Country)
+        @Html.DropDownListFor(n => n.objoffice.Country, Model.Cntries, "Please Select Country"
+       , new { @id = "Country" })
+        @Html.ValidationMessageFor(n => n.objoffice.Country)
+
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(n => n.objoffice.City)
+        @Html.DropDownListFor(n => n.objoffice.City, Enumerable.Empty<SelectListItem>(), "Please Select City",
+       new { @id = "City", @disabled = "disabled" })
+        @Html.ValidationMessageFor(n => n.objoffice.City)
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(n => n.objoffice.State)
+        @Html.DropDownListFor(n => n.objoffice.State, Enumerable.Empty<SelectListItem>(), "Please Select City",
+       new { @id = "state", @disabled = "disabled" })
+        @Html.ValidationMessageFor(n => n.objoffice.State)
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(AllModel => AllModel.objoffice.Phone)
+        @Html.EditorFor(AllModel => AllModel.objoffice.Phone, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(AllModel => AllModel.objoffice.Phone)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(AllModel => AllModel.objoffice.PostalCode)
+        @Html.EditorFor(AllModel => AllModel.objoffice.PostalCode, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(AllModel => AllModel.objoffice.PostalCode)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-primary" });
+</form>
+
+

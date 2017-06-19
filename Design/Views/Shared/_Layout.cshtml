@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")   
+    @Scripts.Render("~/bundles/modernizr")
+   
+    
+
+</head>
+<body>
+    <nav class="navbar navbar-default ">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"> @Domain.Resources.Messages.Label_SuperMarket</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@Domain.Resources.Messages.Label_MasterUserManagement <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink(Domain.Resources.Messages.Label_MasterUser, "Index", "User")</li>
+                            <li>@Html.ActionLink(Domain.Resources.Messages.Label_MasterRole, "Index", "Role")</li>
+                            <li>@Html.ActionLink(Domain.Resources.Messages.Label_MasterFormInfo, "Index", "FormInfo")</li>
+                            <li>@Html.ActionLink(Domain.Resources.Messages.Label_MasterFormAccess, "Index", "Formaccess")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@Domain.Resources.Messages.Label_MasterCountry<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink(Domain.Resources.Messages.Label_MasterSubCountry, "Index", "Country")</li>
+                            <li>@Html.ActionLink(Domain.Resources.Messages.Label_MasterSubCity, "Index", "City")</li>
+                            <li>@Html.ActionLink(Domain.Resources.Messages.Label_MasterState, "Index", "State")</li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@Domain.Resources.Messages.Label_MasterEmployee<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink(Domain.Resources.Messages.Label_MasterSubemployee, "Index", "Employee")</li>
+                            <li>@Html.ActionLink(Domain.Resources.Messages.Label_MasterSubJobTitles, "Index", "JobTitle")</li>
+                            <li>@Html.ActionLink(Domain.Resources.Messages.Label_MasterSubOffices, "Index", "Office")</li>                            
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@Domain.Resources.Messages.Label_MasterLanguage<span class="caret"></span></a>
+                        
+                        <ul class="dropdown-menu">
+
+                            <li> @Html.ActionLink("English", "Change", "Language", new { LanguageAbrrevieation = "en" }, null)</li>
+                            <li> @Html.ActionLink("Arabic", "Change", "Language", new { LanguageAbrrevieation = "ar" }, null)</li>
+                           
+                        </ul>
+                      
+                    </li>
+
+
+                  
+
+                </ul>              
+              
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+  
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/MyscriptBundle")
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+           // $("#Country").blur(function () { $(this).valid() });
+            $('#Country').change(function () {
+                $(this).valid();
+                if ($(this).val() === "")
+                {
+                    $('#City').prop('disabled', true).html("<option>Please Select City</option>");
+                }
+              
+           $.ajax({
+               url: '/state/CityByCountry',
+               type: 'POST',
+               data: { CountryId: $(this).val() },
+               datatype: 'json',
+               success: function (data) {
+                   var options = '';
+                   $.each(data, function () {
+                       options += '<option value="' + this.Id + '">' + this.Name + '</option>';
+                   });                 
+                   $('#City').prop('disabled', false).html(options);
+               }
+               ,
+               error: function () {
+                  
+                   //alert("Error");
+               },
+           });
+
+            });
+
+
+            $('#City').change(function () {
+                $(this).valid();
+                if ($(this).val() === "")
+                {
+                    $('#state').prop('disabled', true).html("<option>Please Select state</option>");
+                }
+              
+
+                $.ajax({
+                    url: '/state/StateByCity',
+                    type: 'POST',
+                    data: { CityId: $(this).val() },
+                    datatype: 'json',
+                    success: function (data) {
+                        var options = '';
+                        $.each(data, function () {
+                            options += '<option value="' + this.Id + '">' + this.Name + '</option>';
+                        });
+                        $('#state').prop('disabled', false).html(options);
+                    }
+             ,
+                    error: function () {
+
+                        //alert("Error");
+                    },
+                });
+
+            });
+
+
+
+
+
+});
+
+    </script>
+  </body>
+</html>

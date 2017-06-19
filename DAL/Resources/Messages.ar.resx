@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Ddl_Form" xml:space="preserve">
+    <value>اختر صفحه</value>
+  </data>
+  <data name="DDl_Form_error" xml:space="preserve">
+    <value>من فضلك اختر صفحه </value>
+  </data>
+  <data name="Ddl_Role" xml:space="preserve">
+    <value>اختر مجموعه</value>
+  </data>
+  <data name="DDl_Role_error" xml:space="preserve">
+    <value>من فضلك اختر مجموعه</value>
+  </data>
+  <data name="Label_Create" xml:space="preserve">
+    <value>اخلق</value>
+  </data>
+  <data name="Label_Delete" xml:space="preserve">
+    <value>مسح</value>
+  </data>
+  <data name="Label_Edit" xml:space="preserve">
+    <value>تعديل</value>
+  </data>
+  <data name="Label_FirstName" xml:space="preserve">
+    <value>الاسم الاول</value>
+  </data>
+  <data name="Label_FormInDescription" xml:space="preserve">
+    <value>وصف الصفحه</value>
+  </data>
+  <data name="Label_FormInfoName" xml:space="preserve">
+    <value>اسم الصفحه</value>
+  </data>
+  <data name="Label_Password" xml:space="preserve">
+    <value>كلمه السر</value>
+  </data>
+  <data name="Label_Password_error" xml:space="preserve">
+    <value>The {0} must be at least {2} characters long.</value>
+  </data>
+  <data name="Label_Read" xml:space="preserve">
+    <value>قراءه</value>
+  </data>
+  <data name="Label_RoleDescription" xml:space="preserve">
+    <value>وصف</value>
+  </data>
+  <data name="Label_RoleName" xml:space="preserve">
+    <value>اسم المجموعه</value>
+  </data>
+  <data name="Label_SecondName" xml:space="preserve">
+    <value>الاسم الثانى</value>
+  </data>
+  <data name="Label_UserName" xml:space="preserve">
+    <value>اسم المستخدم</value>
+  </data>
+  <data name="lst_AllFormAccess" xml:space="preserve">
+    <value>كل صفحات الدخول</value>
+  </data>
+  <data name="lst_AllRoles" xml:space="preserve">
+    <value>كل المجموعات</value>
+  </data>
+  <data name="lst_AllUsers" xml:space="preserve">
+    <value>كل المستخدمين</value>
+  </data>
+  <data name="lst_RoleUser" xml:space="preserve">
+    <value>مستخدمين المجموعه</value>
+  </data>
+  <data name="lst_UserRole" xml:space="preserve">
+    <value>مجموعات المستخدم</value>
+  </data>
+  <data name="Label_CityName" xml:space="preserve">
+    <value>مدينه</value>
+  </data>
+  <data name="Label_City_Name_Required" xml:space="preserve">
+    <value>اسم المدينه مطلوب</value>
+  </data>
+  <data name="Label_City_Required" xml:space="preserve">
+    <value>المدينه مطلوب</value>
+  </data>
+  <data name="Label_CountryName" xml:space="preserve">
+    <value>عاصمه</value>
+  </data>
+  <data name="Label_Country_Name_Required" xml:space="preserve">
+    <value>اسم البلد مطلوب</value>
+  </data>
+  <data name="Label_Country_Required" xml:space="preserve">
+    <value>البلد مطلوب</value>
+  </data>
+  <data name="Label_StateName" xml:space="preserve">
+    <value>الحى</value>
+  </data>
+  <data name="Label_State_Name_Required" xml:space="preserve">
+    <value>اسم الحى مطلوب</value>
+  </data>
+  <data name="Label_JobTitleDescription" xml:space="preserve">
+    <value>وصف الوظيفه</value>
+  </data>
+  <data name="Label_JobTitleName" xml:space="preserve">
+    <value>اسم الوظيفه</value>
+  </data>
+  <data name="Label_OfficeCity" xml:space="preserve">
+    <value>مدينه المكتب</value>
+  </data>
+  <data name="Label_OfficeCode" xml:space="preserve">
+    <value>كود المكتب</value>
+  </data>
+  <data name="Label_OfficeCountry" xml:space="preserve">
+    <value>بلد المكتب</value>
+  </data>
+  <data name="Label_Officephone" xml:space="preserve">
+    <value>هاتف المكتب</value>
+  </data>
+  <data name="Label_OfficePostalCode" xml:space="preserve">
+    <value>كود البريد للمكتب</value>
+  </data>
+  <data name="Label_OfficeState" xml:space="preserve">
+    <value>حى المكتب</value>
+  </data>
+  <data name="Label_Email_Employee" xml:space="preserve">
+    <value>ايميل الموظف </value>
+  </data>
+  <data name="Label_Email_Employee_Required" xml:space="preserve">
+    <value>ايميل الموظف مطلوب</value>
+  </data>
+  <data name="Label_EmployNumber" xml:space="preserve">
+    <value>رقم الموظف</value>
+  </data>
+  <data name="Label_EmployNumber_Required" xml:space="preserve">
+    <value>رقم الموظف مطلوب</value>
+  </data>
+  <data name="Label_Extension_Employee" xml:space="preserve">
+    <value>الامتداد</value>
+  </data>
+  <data name="Label_Extension_Employee_Required" xml:space="preserve">
+    <value>الامتداد مطلوب</value>
+  </data>
+  <data name="Label_FirstName_Employee" xml:space="preserve">
+    <value>الاسم الاول للموظف</value>
+  </data>
+  <data name="Label_FirstName_Employee_Required" xml:space="preserve">
+    <value>الاسم الاول مطلوب</value>
+  </data>
+  <data name="Label_JobTitle_Employee" xml:space="preserve">
+    <value>اسم الوظيفه</value>
+  </data>
+  <data name="Label_JobTitle_Employee_Required" xml:space="preserve">
+    <value>اسم الوظيفه مطلوب</value>
+  </data>
+  <data name="Label_LastName_Employee" xml:space="preserve">
+    <value>الاسم الثانى</value>
+  </data>
+  <data name="Label_LastName_Employee_Required" xml:space="preserve">
+    <value>الاسم الثانى مطلوب</value>
+  </data>
+  <data name="Label_OfficeId_Employee" xml:space="preserve">
+    <value>المكتب</value>
+  </data>
+  <data name="Label_OfficeId_Employee_Required" xml:space="preserve">
+    <value>المكتب مطلوب</value>
+  </data>
+  <data name="Label_ReportsTo_Employee" xml:space="preserve">
+    <value>يسلم ل</value>
+  </data>
+  <data name="Label_ReportsTo_Employee_Required" xml:space="preserve">
+    <value>مطلوب</value>
+  </data>
+  <data name="Label_MasterCountry" xml:space="preserve">
+    <value>البلاد</value>
+  </data>
+  <data name="Label_MasterFormAccess" xml:space="preserve">
+    <value>امان الصفحه</value>
+  </data>
+  <data name="Label_MasterFormInfo" xml:space="preserve">
+    <value>الصفحه</value>
+  </data>
+  <data name="Label_MasterRole" xml:space="preserve">
+    <value>المجموعه</value>
+  </data>
+  <data name="Label_MasterUser" xml:space="preserve">
+    <value>المستخدم</value>
+  </data>
+  <data name="Label_MasterUserManagement" xml:space="preserve">
+    <value>اداره المستخدم</value>
+  </data>
+  <data name="Label_SuperMarket" xml:space="preserve">
+    <value>سوبرماركت</value>
+  </data>
+  <data name="Label_GeneralCreate" xml:space="preserve">
+    <value>خلق</value>
+  </data>
+  <data name="Label_GeneralDelete" xml:space="preserve">
+    <value>مسح</value>
+  </data>
+  <data name="Label_GeneralEdit" xml:space="preserve">
+    <value>تعديل</value>
+  </data>
+  <data name="Label_Index" xml:space="preserve">
+    <value>البيانات</value>
+  </data>
+  <data name="Label_MasterEmployee" xml:space="preserve">
+    <value>اداره الموظفين</value>
+  </data>
+  <data name="Label_MasterLanguage" xml:space="preserve">
+    <value>تغيير اللغه</value>
+  </data>
+  <data name="Label_MasterState" xml:space="preserve">
+    <value>الاحياء</value>
+  </data>
+  <data name="Label_MasterSubCity" xml:space="preserve">
+    <value>البلاد</value>
+  </data>
+  <data name="Label_MasterSubCountry" xml:space="preserve">
+    <value>العواصم</value>
+  </data>
+  <data name="Label_MasterSubemployee" xml:space="preserve">
+    <value>الموظفين</value>
+  </data>
+  <data name="Label_MasterSubJobTitles" xml:space="preserve">
+    <value>عنوان الوظيفه</value>
+  </data>
+  <data name="Label_MasterSubOffices" xml:space="preserve">
+    <value>المكاتب</value>
+  </data>
+  <data name="Label_Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="Label_DateOfBirth" xml:space="preserve">
+    <value>تاريخ الميلاد</value>
+  </data>
+  <data name="Label_Email" xml:space="preserve">
+    <value>البريد الالكترونى</value>
+  </data>
+  <data name="Label_SearchToolTip" xml:space="preserve">
+    <value>اكتب هنا للبحث</value>
+  </data>
+  <data name="Label_Url" xml:space="preserve">
+    <value>اسم الموقع</value>
+  </data>
+</root>

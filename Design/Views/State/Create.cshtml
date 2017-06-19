@@ -1,0 +1,33 @@
+﻿@model  StateViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>@Domain.Resources.Messages.Label_Create</h2>
+
+<form method="post">
+      
+    <div class="form-group">
+        @Html.LabelFor(n => n.objState.City.CountryId)
+        @Html.DropDownListFor(m=>m.CntrySelect, Model.Cntries, "Please Select Country"
+       , new { @id = "Country" })
+        @Html.ValidationMessageFor(n => n.objState.City.CountryId)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(n => n.objState.CityId)
+        @Html.DropDownListFor(n => n.objState.CityId, Enumerable.Empty<SelectListItem>(),  "Please Select City",
+       new { @id = "City", @disabled = "disabled" })
+        @Html.ValidationMessageFor(n => n.objState.CityId)
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(AllModel => AllModel.objState.Name)
+            @Html.EditorFor(AllModel => AllModel.objState.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(AllModel => AllModel.objState.Name)
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-primary" });
+</form>
+

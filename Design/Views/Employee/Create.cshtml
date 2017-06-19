@@ -1,0 +1,59 @@
+﻿@model  EmployeeViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>@Domain.Resources.Messages.Label_Create</h2>
+
+<form method="post">
+    <div class="form-group">
+        @Html.LabelFor(AllModel => AllModel.objemplyee.FirstName)
+        @Html.EditorFor(AllModel => AllModel.objemplyee.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(AllModel => AllModel.objemplyee.FirstName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(AllModel => AllModel.objemplyee.LastName)
+        @Html.EditorFor(AllModel => AllModel.objemplyee.LastName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(AllModel => AllModel.objemplyee.LastName)
+    </div>
+    <div class="form-group">
+    @Html.LabelFor(AllModel => AllModel.objemplyee.Extension)
+    @Html.EditorFor(AllModel => AllModel.objemplyee.Extension, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(AllModel => AllModel.objemplyee.Extension)
+   </div>
+    <div class="form-group">
+        @Html.LabelFor(AllModel => AllModel.objemplyee.Email)
+        @Html.EditorFor(AllModel => AllModel.objemplyee.Email, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(AllModel => AllModel.objemplyee.Email)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(AllModel => AllModel.objemplyee.EmployNumber)
+        @Html.EditorFor(AllModel => AllModel.objemplyee.EmployNumber, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(AllModel => AllModel.objemplyee.EmployNumber)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(n => n.objemplyee.OfficeId)
+        @Html.DropDownListFor(n => n.objemplyee.OfficeId, Model.offices, "Please Select Office")
+        @Html.ValidationMessageFor(n => n.objemplyee.OfficeId)
+    </div>
+        <div class="form-group">
+            @Html.LabelFor(n => n.objemplyee.JobTitle)
+            @Html.DropDownListFor(n => n.objemplyee.JobTitle, Model.jobtitles, "Please Select JobTitle")
+            @Html.ValidationMessageFor(n => n.objemplyee.JobTitle)
+        </div>  
+   
+    <div class="form-group">
+        @Html.LabelFor(n => n.objemplyee.ReportsTo)
+        @Html.DropDownListFor(n => n.objemplyee.ReportsTo, Model.employees, "Please Select reports to ")
+        @Html.ValidationMessageFor(n => n.objemplyee.ReportsTo)
+    </div>
+    
+
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-primary" });
+</form>
+
+
+

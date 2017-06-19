@@ -1,0 +1,10 @@
+E:\MyWork\SuperMarket\DAL\bin\Debug\DAL.dll.config
+E:\MyWork\SuperMarket\DAL\bin\Debug\DAL.dll
+E:\MyWork\SuperMarket\DAL\bin\Debug\DAL.pdb
+E:\MyWork\SuperMarket\DAL\bin\Debug\EntityFramework.dll
+E:\MyWork\SuperMarket\DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\MyWork\SuperMarket\DAL\bin\Debug\EntityFramework.xml
+E:\MyWork\SuperMarket\DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\MyWork\SuperMarket\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+E:\MyWork\SuperMarket\DAL\obj\Debug\DAL.dll
+E:\MyWork\SuperMarket\DAL\obj\Debug\DAL.pdb

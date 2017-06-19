@@ -1,0 +1,93 @@
+﻿@model RoleUserViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form method="post"  id="FrmCreate"   novalidate="novalidate">
+   
+   @Html.HiddenFor(x => x._User.Id, new { id = "hdnFlag" })
+    <div class="form-group">
+        @Html.LabelFor(AllModel => AllModel._User.FirstName)
+        @Html.EditorFor(AllModel => AllModel._User.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(AllModel => AllModel._User.FirstName, null, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(AllModel => AllModel._User.SecondName)
+        @Html.EditorFor(AllModel => AllModel._User.SecondName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(AllModel => AllModel._User.SecondName, null, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(AllModel => AllModel._User.UserName)
+        @Html.EditorFor(AllModel => AllModel._User.UserName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(AllModel => AllModel._User.UserName, null, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(AllModel => AllModel._User.Password)
+        @Html.EditorFor(AllModel => AllModel._User.Password, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(AllModel => AllModel._User.Password, null, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(AllModel => AllModel._User.Email)
+        @Html.EditorFor(AllModel => AllModel._User.Email, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(AllModel => AllModel._User.Email, null, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(AllModel => AllModel._User.Url)
+        @Html.EditorFor(AllModel => AllModel._User.Url, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(AllModel => AllModel._User.Url, null, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(AllModel => AllModel._User.DateOfBirth)
+        @Html.EditorFor(AllModel => AllModel._User.DateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(AllModel => AllModel._User.DateOfBirth, null, new { @class = "text-danger" })
+    </div>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    @Html.LabelFor(AllModel => AllModel.NotSpecifiedUser)
+                </td>
+                <td></td>
+                <td>
+                    @Html.LabelFor(AllModel => AllModel.RolesForSpecifiedUser)
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    @Html.ListBoxFor(Model => Model.AllSelected, new MultiSelectList(Model.NotSpecifiedUser,
+                   "Id",
+                    "Name", Model.AllSelected),
+                    new { size = "6", id = "lstAll" })
+
+                </td>
+                <td>
+                    <input id="btnAddAll" type="button" value=">> " />
+                    <input id="btnAdd" type="button" value="> " />
+                    <input id="btnRemove" type="button" value="<" />
+                    <input id="btnRemoveAll" type="button" value="<< " />
+                </td>
+                <td>
+                    @Html.ListBoxFor(Model => Model.SpecifiedSelected, new MultiSelectList(Model.RolesForSpecifiedUser,
+                   "Id",
+                    "Name", Model.SpecifiedSelected),
+                    new { size = "6", id = "lstselected" })
+
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    <div class="form-group">    
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-primary" });
+</form>

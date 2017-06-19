@@ -1,0 +1,48 @@
+﻿@model  FormAccessViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Create</h2>
+
+<form method="post" novalidate="novalidate">
+    @Html.HiddenFor(x => x.FormAccess.Id, new { id = "hdnFlag" })
+    <div class="form-group">
+        @Html.LabelFor(n => n.FormAccess.FormIdFK)
+        @Html.DropDownListFor(n => n.FormAccess.FormIdFK, Model.frms, "Select Form")
+        @Html.ValidationMessageFor(n => n.FormAccess.FormIdFK)
+    </div>
+    <div class="form-group">
+
+        @Html.LabelFor(AllModel => AllModel.FormAccess.ReadForm)
+        @Html.EditorFor(AllModel => AllModel.FormAccess.ReadForm, new { htmlAttributes = new { @class = "form-control" } })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(AllModel => AllModel.FormAccess.createForm)
+        @Html.EditorFor(AllModel => AllModel.FormAccess.createForm, new { htmlAttributes = new { @class = "form-control" } })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(AllModel => AllModel.FormAccess.EditForm)
+        @Html.EditorFor(AllModel => AllModel.FormAccess.EditForm, new { htmlAttributes = new { @class = "form-control" } })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(AllModel => AllModel.FormAccess.DeleteForm)
+        @Html.EditorFor(AllModel => AllModel.FormAccess.DeleteForm, new { htmlAttributes = new { @class = "form-control" } })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(n => n.FormAccess.RoleidFK)
+        @Html.DropDownListFor(n => n.FormAccess.RoleidFK, Model.Rols, "Please Select Role")
+        @Html.ValidationMessageFor(n => n.FormAccess.RoleidFK)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-primary" });
+</form>
+
+

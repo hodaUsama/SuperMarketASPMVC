@@ -1,0 +1,59 @@
+﻿@model PagedList.IPagedList<Domain.Role>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = Domain.Resources.Messages.Label_Index; 
+}
+
+<h2>@Domain.Resources.Messages.Label_Index</h2>
+
+<form method="GET" class="form-inline">
+    <div class="form-group">
+
+        <div class="input-group">
+            <input type="text" autocomplete="off" id="kk" class="form-control" name="Keywords"
+                   dataautocomplete="@Url.Action("QuickSearch")" placeholder="@Domain.Resources.Messages.Label_SearchToolTip">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">@Domain.Resources.Messages.Label_Search</button>
+</form>
+
+<p class="text-right">
+    @Html.ActionLink(Domain.Resources.Messages.Label_Create, "Create", null, new { @class = "btn btn-primary" })
+
+</p>
+
+
+<table class="table table-bordered">
+   
+    <thead>
+        <tr>
+            <th>
+                @Html.ActionLink(Html.DisplayNameFor(rl => rl.First().Name).ToHtmlString(), "Index", new { sortOrder = ViewBag.NameSortParm, Keywords = ViewBag.CurrentFilter })
+            </th>
+            <td>@Html.DisplayNameFor(rl => rl.First().Description)</td>
+            <td>@Domain.Resources.Messages.Label_GeneralDelete</td>
+            <td>@Domain.Resources.Messages.Label_GeneralEdit</td>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var r in Model)
+        {
+            <tr>
+
+                <td>@Html.DisplayFor(us => r.Name)</td>
+                <td>@Html.DisplayFor(us => r.Description)</td>
+                <td>@Html.ActionLink(Domain.Resources.Messages.Label_GeneralDelete, "Delete", new { r.Id })</td>
+                <td>@Html.ActionLink(Domain.Resources.Messages.Label_GeneralEdit, "Edit", new { r.Id })</td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, Keywords = ViewBag.CurrentFilter }))

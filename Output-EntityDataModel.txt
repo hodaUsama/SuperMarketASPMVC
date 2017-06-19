@@ -1,0 +1,3 @@
+﻿Generated model file: SuperMarketContext.edmx.
+Loading metadata from the database took 00:00:00.8743500.
+Generating the model took 00:00:10.0384141.

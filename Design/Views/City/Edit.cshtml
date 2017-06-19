@@ -1,0 +1,26 @@
+﻿@model  CityViewModel
+
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Create</h2>
+
+<form method="post" novalidate="novalidate">
+    @Html.HiddenFor(AllModel => AllModel.objCity.Id, new { id = "hdnFlag" })
+    <div class="form-group">
+        @Html.LabelFor(n => n.objCity.CountryId)
+        @Html.DropDownListFor(n => n.objCity.CountryId, Model.Cntries, "Please Select Country")
+        @Html.ValidationMessageFor(n => n.objCity.CountryId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(AllModel => AllModel.objCity.Name)
+        @Html.EditorFor(AllModel => AllModel.objCity.Name, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(AllModel => AllModel.objCity.Name)
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-primary" });
+</form>
+
+

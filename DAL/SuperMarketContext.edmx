@@ -1,0 +1,1415 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SupermarketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryId" Type="int" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerNumber" Type="int" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LatName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddressLine1" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddressLine2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="int" />
+          <Property Name="City" Type="int" />
+          <Property Name="State" Type="int" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="SalesRepEmployeeNumber" Type="int" />
+          <Property Name="CreditLimit" Type="int" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployNumber" Type="int" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Extension" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReportsTo" Type="int" />
+          <Property Name="JobTitle" Type="int" />
+          <Property Name="OfficeId" Type="int" />
+        </EntityType>
+        <EntityType Name="FormAccess">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormIdFK" Type="int" Nullable="false" />
+          <Property Name="ReadForm" Type="bit" />
+          <Property Name="createForm" Type="bit" />
+          <Property Name="EditForm" Type="bit" />
+          <Property Name="DeleteForm" Type="bit" />
+          <Property Name="RoleidFK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FormInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="JobTitle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="JobDescription" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Office">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OfficeCode" Type="int" />
+          <Property Name="State" Type="int" />
+          <Property Name="City" Type="int" />
+          <Property Name="Country" Type="int" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderNumber" Type="int" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="RequiredDate" Type="datetime" />
+          <Property Name="ShippedDate" Type="datetime" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="CustomerId" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="QuantityOrdered" Type="int" />
+          <Property Name="OrderLineNumber" Type="int" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="CheckNumber" Type="int" />
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="Amount" Type="int" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductVendor" Type="int" Nullable="false" />
+          <Property Name="ProductDescription" Type="nvarchar" MaxLength="50" />
+          <Property Name="QuantityInStock" Type="int" />
+          <Property Name="BuyPrice" Type="int" />
+          <Property Name="MSRP" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductLine" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductLine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="Image" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="CityId" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SecondName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Url" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="User-Id" />
+            <PropertyRef Name="Role-Id" />
+          </Key>
+          <Property Name="User-Id" Type="int" Nullable="false" />
+          <Property Name="Role-Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_City_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_customer_city">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_customer_country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Customer_SalesRepEmployeeNumber">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="SalesRepEmployeeNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_customer_state">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="State" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CustomerId">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CustomerId_Payment">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Employee_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Employee1" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee1">
+              <PropertyRef Name="ReportsTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_JobTitle">
+          <End Role="JobTitle" Type="Self.JobTitle" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobTitle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="JobTitle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Employee_OfficeId">
+          <End Role="Office" Type="Self.Office" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Office">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormAccess_Form-Info">
+          <End Role="FormInfo" Type="Self.FormInfo" Multiplicity="1" />
+          <End Role="FormAccess" Type="Self.FormAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormAccess">
+              <PropertyRef Name="FormIdFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormAccess_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="FormAccess" Type="Self.FormAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormAccess">
+              <PropertyRef Name="RoleidFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Office_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Office" Type="Self.Office" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Office">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Office_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Office" Type="Self.Office" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Office">
+              <PropertyRef Name="Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Office_state">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="Office" Type="Self.Office" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Office">
+              <PropertyRef Name="State" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrderId">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Product_Vendor">
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductVendor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ProductId">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ProductLine">
+          <End Role="ProductLine" Type="Self.ProductLine" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductLine">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductLine" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_State_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="State" Type="Self.State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User-Roles_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="Role-Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User-Roles_User">
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="User-Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SupermarketModelStoreContainer">
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormAccess" EntityType="Self.FormAccess" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormInfo" EntityType="Self.FormInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobTitle" EntityType="Self.JobTitle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Office" EntityType="Self.Office" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductLine" EntityType="Self.ProductLine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_City_Country" Association="Self.FK_City_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="fk_customer_city" Association="Self.fk_customer_city">
+            <End Role="City" EntitySet="City" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="fk_customer_country" Association="Self.fk_customer_country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Customer_SalesRepEmployeeNumber" Association="Self.fk_Customer_SalesRepEmployeeNumber">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="fk_customer_state" Association="Self.fk_customer_state">
+            <End Role="State" EntitySet="State" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CustomerId" Association="Self.fk_CustomerId">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CustomerId_Payment" Association="Self.fk_CustomerId_Payment">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Employee_Employee" Association="Self.fk_Employee_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Employee1" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_JobTitle" Association="Self.FK_Employee_JobTitle">
+            <End Role="JobTitle" EntitySet="JobTitle" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Employee_OfficeId" Association="Self.fk_Employee_OfficeId">
+            <End Role="Office" EntitySet="Office" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormAccess_Form-Info" Association="Self.FK_FormAccess_Form-Info">
+            <End Role="FormInfo" EntitySet="FormInfo" />
+            <End Role="FormAccess" EntitySet="FormAccess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormAccess_Role" Association="Self.FK_FormAccess_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="FormAccess" EntitySet="FormAccess" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Office_City" Association="Self.fk_Office_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Office" EntitySet="Office" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Office_Country" Association="Self.fk_Office_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Office" EntitySet="Office" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Office_state" Association="Self.fk_Office_state">
+            <End Role="State" EntitySet="State" />
+            <End Role="Office" EntitySet="Office" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrderId" Association="Self.fk_OrderId">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Product_Vendor" Association="Self.fk_Product_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ProductId" Association="Self.fk_ProductId">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ProductLine" Association="Self.fk_ProductLine">
+            <End Role="ProductLine" EntitySet="ProductLine" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_State_City" Association="Self.FK_State_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="State" EntitySet="State" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User-Roles_Role" Association="Self.FK_User-Roles_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User-Roles_User" Association="Self.FK_User-Roles_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SupermarketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="FormAccess">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormIdFK" Type="Int32" Nullable="false" />
+          <Property Name="ReadForm" Type="Boolean" />
+          <Property Name="createForm" Type="Boolean" />
+          <Property Name="EditForm" Type="Boolean" />
+          <Property Name="DeleteForm" Type="Boolean" />
+          <Property Name="RoleidFK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FormInfo" Relationship="Self.FK_FormAccess_Form_Info" FromRole="FormAccess" ToRole="FormInfo" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_FormAccess_Role" FromRole="FormAccess" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="FormInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FormAccesses" Relationship="Self.FK_FormAccess_Form_Info" FromRole="FormInfo" ToRole="FormAccess" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FormAccesses" Relationship="Self.FK_FormAccess_Role" FromRole="Role" ToRole="FormAccess" />
+          <NavigationProperty Name="Users" Relationship="Self.UserRoles" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SecondName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Roles" Relationship="Self.UserRoles" FromRole="User" ToRole="Role" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_FormAccess_Form_Info">
+          <End Role="FormInfo" Type="Self.FormInfo" Multiplicity="1" />
+          <End Role="FormAccess" Type="Self.FormAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormAccess">
+              <PropertyRef Name="FormIdFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormAccess_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="FormAccess" Type="Self.FormAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormAccess">
+              <PropertyRef Name="RoleidFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserRoles">
+          <End Role="Role" Type="Self.Role" Multiplicity="*" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Context" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FormAccesses" EntityType="Self.FormAccess" />
+          <EntitySet Name="FormInfoes" EntityType="Self.FormInfo" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_FormAccess_Form_Info" Association="Self.FK_FormAccess_Form_Info">
+            <End Role="FormInfo" EntitySet="FormInfoes" />
+            <End Role="FormAccess" EntitySet="FormAccesses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormAccess_Role" Association="Self.FK_FormAccess_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="FormAccess" EntitySet="FormAccesses" />
+          </AssociationSet>
+          <AssociationSet Name="UserRoles" Association="Self.UserRoles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="Cities" EntityType="SupermarketModel.City" />
+          <EntitySet Name="Countries" EntityType="SupermarketModel.Country" />
+          <EntitySet Name="Customers" EntityType="SupermarketModel.Customer" />
+          <EntitySet Name="Employees" EntityType="SupermarketModel.Employee" />
+          <EntitySet Name="JobTitles" EntityType="SupermarketModel.JobTitle" />
+          <EntitySet Name="Offices" EntityType="SupermarketModel.Office" />
+          <EntitySet Name="Orders" EntityType="SupermarketModel.Order" />
+          <EntitySet Name="OrderDetails" EntityType="SupermarketModel.OrderDetail" />
+          <EntitySet Name="Payments" EntityType="SupermarketModel.Payment" />
+          <EntitySet Name="Products" EntityType="SupermarketModel.Product" />
+          <EntitySet Name="ProductLines" EntityType="SupermarketModel.ProductLine" />
+          <EntitySet Name="States" EntityType="SupermarketModel.State" />
+          <EntitySet Name="sysdiagrams" EntityType="SupermarketModel.sysdiagram" />
+          <EntitySet Name="Vendors" EntityType="SupermarketModel.Vendor" />
+          <AssociationSet Name="FK_City_Country" Association="SupermarketModel.FK_City_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_State_City" Association="SupermarketModel.FK_State_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="State" EntitySet="States" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Customer_SalesRepEmployeeNumber" Association="SupermarketModel.fk_Customer_SalesRepEmployeeNumber">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CustomerId" Association="SupermarketModel.fk_CustomerId">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CustomerId_Payment" Association="SupermarketModel.fk_CustomerId_Payment">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Employee_Employee" Association="SupermarketModel.fk_Employee_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Employee1" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Employee_OfficeId" Association="SupermarketModel.fk_Employee_OfficeId">
+            <End Role="Office" EntitySet="Offices" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrderId" Association="SupermarketModel.fk_OrderId">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ProductId" Association="SupermarketModel.fk_ProductId">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ProductLine" Association="SupermarketModel.fk_ProductLine">
+            <End Role="ProductLine" EntitySet="ProductLines" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="fk_customer_city" Association="SupermarketModel.fk_customer_city">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Office_City" Association="SupermarketModel.fk_Office_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Office" EntitySet="Offices" />
+          </AssociationSet>
+          <AssociationSet Name="fk_customer_country" Association="SupermarketModel.fk_customer_country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Office_Country" Association="SupermarketModel.fk_Office_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Office" EntitySet="Offices" />
+          </AssociationSet>
+          <AssociationSet Name="fk_customer_state" Association="SupermarketModel.fk_customer_state">
+            <End Role="State" EntitySet="States" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Office_state" Association="SupermarketModel.fk_Office_state">
+            <End Role="State" EntitySet="States" />
+            <End Role="Office" EntitySet="Offices" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Product_Vendor" Association="SupermarketModel.fk_Product_Vendor">
+            <End Role="Vendor" EntitySet="Vendors" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_JobTitle" Association="SupermarketModel.FK_Employee_JobTitle">
+            <End Role="JobTitle" EntitySet="JobTitles" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryId" Type="Int32" />
+          <NavigationProperty Name="Country" Relationship="SupermarketModel.FK_City_Country" FromRole="City" ToRole="Country" />
+          <NavigationProperty Name="States" Relationship="SupermarketModel.FK_State_City" FromRole="City" ToRole="State" />
+          <NavigationProperty Name="Customers" Relationship="SupermarketModel.fk_customer_city" FromRole="City" ToRole="Customer" />
+          <NavigationProperty Name="Offices" Relationship="SupermarketModel.fk_Office_City" FromRole="City" ToRole="Office" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cities" Relationship="SupermarketModel.FK_City_Country" FromRole="Country" ToRole="City" />
+          <NavigationProperty Name="Customers" Relationship="SupermarketModel.fk_customer_country" FromRole="Country" ToRole="Customer" />
+          <NavigationProperty Name="Offices" Relationship="SupermarketModel.fk_Office_Country" FromRole="Country" ToRole="Office" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerNumber" Type="Int32" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LatName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="Int32" />
+          <Property Name="City" Type="Int32" />
+          <Property Name="State" Type="Int32" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SalesRepEmployeeNumber" Type="Int32" />
+          <Property Name="CreditLimit" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="SupermarketModel.fk_Customer_SalesRepEmployeeNumber" FromRole="Customer" ToRole="Employee" />
+          <NavigationProperty Name="Orders" Relationship="SupermarketModel.fk_CustomerId" FromRole="Customer" ToRole="Order" />
+          <NavigationProperty Name="Payments" Relationship="SupermarketModel.fk_CustomerId_Payment" FromRole="Customer" ToRole="Payment" />
+          <NavigationProperty Name="City1" Relationship="SupermarketModel.fk_customer_city" FromRole="Customer" ToRole="City" />
+          <NavigationProperty Name="Country1" Relationship="SupermarketModel.fk_customer_country" FromRole="Customer" ToRole="Country" />
+          <NavigationProperty Name="State1" Relationship="SupermarketModel.fk_customer_state" FromRole="Customer" ToRole="State" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployNumber" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Extension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReportsTo" Type="Int32" />
+          <Property Name="JobTitle" Type="Int32" />
+          <Property Name="OfficeId" Type="Int32" />
+          <NavigationProperty Name="Customers" Relationship="SupermarketModel.fk_Customer_SalesRepEmployeeNumber" FromRole="Employee" ToRole="Customer" />
+          <NavigationProperty Name="Employee1" Relationship="SupermarketModel.fk_Employee_Employee" FromRole="Employee" ToRole="Employee1" />
+          <NavigationProperty Name="Employee2" Relationship="SupermarketModel.fk_Employee_Employee" FromRole="Employee1" ToRole="Employee" />
+          <NavigationProperty Name="Office" Relationship="SupermarketModel.fk_Employee_OfficeId" FromRole="Employee" ToRole="Office" />
+          <NavigationProperty Name="JobTitle1" Relationship="SupermarketModel.FK_Employee_JobTitle" FromRole="Employee" ToRole="JobTitle" />
+        </EntityType>
+        <EntityType Name="JobTitle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobTitle1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JobDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="SupermarketModel.FK_Employee_JobTitle" FromRole="JobTitle" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Office">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OfficeCode" Type="Int32" />
+          <Property Name="State" Type="Int32" />
+          <Property Name="City" Type="Int32" />
+          <Property Name="Country" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="SupermarketModel.fk_Employee_OfficeId" FromRole="Office" ToRole="Employee" />
+          <NavigationProperty Name="City1" Relationship="SupermarketModel.fk_Office_City" FromRole="Office" ToRole="City" />
+          <NavigationProperty Name="Country1" Relationship="SupermarketModel.fk_Office_Country" FromRole="Office" ToRole="Country" />
+          <NavigationProperty Name="State1" Relationship="SupermarketModel.fk_Office_state" FromRole="Office" ToRole="State" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderNumber" Type="Int32" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RequiredDate" Type="DateTime" Precision="3" />
+          <Property Name="ShippedDate" Type="DateTime" Precision="3" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerId" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="SupermarketModel.fk_CustomerId" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="OrderDetails" Relationship="SupermarketModel.fk_OrderId" FromRole="Order" ToRole="OrderDetail" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="QuantityOrdered" Type="Int32" />
+          <Property Name="OrderLineNumber" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="SupermarketModel.fk_OrderId" FromRole="OrderDetail" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="SupermarketModel.fk_ProductId" FromRole="OrderDetail" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="CheckNumber" Type="Int32" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="Amount" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="SupermarketModel.fk_CustomerId_Payment" FromRole="Payment" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductVendor" Type="Int32" Nullable="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QuantityInStock" Type="Int32" />
+          <Property Name="BuyPrice" Type="Int32" />
+          <Property Name="MSRP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductLine" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OrderDetails" Relationship="SupermarketModel.fk_ProductId" FromRole="Product" ToRole="OrderDetail" />
+          <NavigationProperty Name="ProductLine1" Relationship="SupermarketModel.fk_ProductLine" FromRole="Product" ToRole="ProductLine" />
+          <NavigationProperty Name="Vendor" Relationship="SupermarketModel.fk_Product_Vendor" FromRole="Product" ToRole="Vendor" />
+        </EntityType>
+        <EntityType Name="ProductLine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="SupermarketModel.fk_ProductLine" FromRole="ProductLine" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CityId" Type="Int32" />
+          <NavigationProperty Name="City" Relationship="SupermarketModel.FK_State_City" FromRole="State" ToRole="City" />
+          <NavigationProperty Name="Customers" Relationship="SupermarketModel.fk_customer_state" FromRole="State" ToRole="Customer" />
+          <NavigationProperty Name="Offices" Relationship="SupermarketModel.fk_Office_state" FromRole="State" ToRole="Office" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="SupermarketModel.fk_Product_Vendor" FromRole="Vendor" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_City_Country">
+          <End Type="SupermarketModel.Country" Role="Country" Multiplicity="0..1" />
+          <End Type="SupermarketModel.City" Role="City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_State_City">
+          <End Type="SupermarketModel.City" Role="City" Multiplicity="0..1" />
+          <End Type="SupermarketModel.State" Role="State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Customer_SalesRepEmployeeNumber">
+          <End Type="SupermarketModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="SupermarketModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="SalesRepEmployeeNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CustomerId">
+          <End Type="SupermarketModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="SupermarketModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CustomerId_Payment">
+          <End Type="SupermarketModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="SupermarketModel.Payment" Role="Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Employee_Employee">
+          <End Type="SupermarketModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="SupermarketModel.Employee" Role="Employee1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee1">
+              <PropertyRef Name="ReportsTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Employee_OfficeId">
+          <End Type="SupermarketModel.Office" Role="Office" Multiplicity="0..1" />
+          <End Type="SupermarketModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Office">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrderId">
+          <End Type="SupermarketModel.Order" Role="Order" Multiplicity="0..1" />
+          <End Type="SupermarketModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ProductId">
+          <End Type="SupermarketModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="SupermarketModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ProductLine">
+          <End Type="SupermarketModel.ProductLine" Role="ProductLine" Multiplicity="1" />
+          <End Type="SupermarketModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductLine">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductLine" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_customer_city">
+          <End Type="SupermarketModel.City" Role="City" Multiplicity="0..1" />
+          <End Type="SupermarketModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Office_City">
+          <End Type="SupermarketModel.City" Role="City" Multiplicity="0..1" />
+          <End Type="SupermarketModel.Office" Role="Office" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Office">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_customer_country">
+          <End Type="SupermarketModel.Country" Role="Country" Multiplicity="0..1" />
+          <End Type="SupermarketModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Office_Country">
+          <End Type="SupermarketModel.Country" Role="Country" Multiplicity="0..1" />
+          <End Type="SupermarketModel.Office" Role="Office" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Office">
+              <PropertyRef Name="Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_customer_state">
+          <End Type="SupermarketModel.State" Role="State" Multiplicity="0..1" />
+          <End Type="SupermarketModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="State" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Office_state">
+          <End Type="SupermarketModel.State" Role="State" Multiplicity="0..1" />
+          <End Type="SupermarketModel.Office" Role="Office" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Office">
+              <PropertyRef Name="State" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Product_Vendor">
+          <End Type="SupermarketModel.Vendor" Role="Vendor" Multiplicity="1" />
+          <End Type="SupermarketModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductVendor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_JobTitle">
+          <End Type="SupermarketModel.JobTitle" Role="JobTitle" Multiplicity="0..1" />
+          <End Type="SupermarketModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobTitle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="JobTitle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SupermarketModelStoreContainer" CdmEntityContainer="Context">
+          <EntitySetMapping Name="FormAccesses">
+            <EntityTypeMapping TypeName="SupermarketModel.FormAccess">
+              <MappingFragment StoreEntitySet="FormAccess">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FormIdFK" ColumnName="FormIdFK" />
+                <ScalarProperty Name="ReadForm" ColumnName="ReadForm" />
+                <ScalarProperty Name="createForm" ColumnName="createForm" />
+                <ScalarProperty Name="EditForm" ColumnName="EditForm" />
+                <ScalarProperty Name="DeleteForm" ColumnName="DeleteForm" />
+                <ScalarProperty Name="RoleidFK" ColumnName="RoleidFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormInfoes">
+            <EntityTypeMapping TypeName="SupermarketModel.FormInfo">
+              <MappingFragment StoreEntitySet="FormInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="SupermarketModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SupermarketModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="UserRoles" TypeName="SupermarketModel.UserRoles" StoreEntitySet="UserRoles">
+            <EndProperty Name="Role">
+              <ScalarProperty Name="Id" ColumnName="Role-Id" />
+            </EndProperty>
+            <EndProperty Name="User">
+              <ScalarProperty Name="Id" ColumnName="User-Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="SupermarketModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="SupermarketModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="SupermarketModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
+                <ScalarProperty Name="SalesRepEmployeeNumber" ColumnName="SalesRepEmployeeNumber" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="LatName" ColumnName="LatName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerNumber" ColumnName="CustomerNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="SupermarketModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="ReportsTo" ColumnName="ReportsTo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="EmployNumber" ColumnName="EmployNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobTitles">
+            <EntityTypeMapping TypeName="SupermarketModel.JobTitle">
+              <MappingFragment StoreEntitySet="JobTitle">
+                <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+                <ScalarProperty Name="JobTitle1" ColumnName="JobTitle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Offices">
+            <EntityTypeMapping TypeName="SupermarketModel.Office">
+              <MappingFragment StoreEntitySet="Office">
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="OfficeCode" ColumnName="OfficeCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="SupermarketModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="ShippedDate" ColumnName="ShippedDate" />
+                <ScalarProperty Name="RequiredDate" ColumnName="RequiredDate" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="SupermarketModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="OrderLineNumber" ColumnName="OrderLineNumber" />
+                <ScalarProperty Name="QuantityOrdered" ColumnName="QuantityOrdered" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="SupermarketModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="CheckNumber" ColumnName="CheckNumber" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="SupermarketModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProductLine" ColumnName="ProductLine" />
+                <ScalarProperty Name="MSRP" ColumnName="MSRP" />
+                <ScalarProperty Name="BuyPrice" ColumnName="BuyPrice" />
+                <ScalarProperty Name="QuantityInStock" ColumnName="QuantityInStock" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="ProductVendor" ColumnName="ProductVendor" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductLines">
+            <EntityTypeMapping TypeName="SupermarketModel.ProductLine">
+              <MappingFragment StoreEntitySet="ProductLine">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="SupermarketModel.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SupermarketModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendors">
+            <EntityTypeMapping TypeName="SupermarketModel.Vendor">
+              <MappingFragment StoreEntitySet="Vendor">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

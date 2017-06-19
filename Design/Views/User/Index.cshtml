@@ -1,0 +1,74 @@
+﻿@model PagedList.IPagedList<Domain.User>
+@using PagedList.Mvc;
+
+
+
+@{
+    ViewBag.Title = Domain.Resources.Messages.Label_Index;
+}
+
+<h2> @Domain.Resources.Messages.Label_Index</h2>
+
+<form method="GET" class="form-inline">
+    <div class="form-group">
+        
+        <div class="input-group">
+            <input type="text" autocomplete="off" id="kk" class="form-control" name="Keywords"
+                   dataautocomplete="@Url.Action("QuickSearch")" placeholder="@Domain.Resources.Messages.Label_SearchToolTip">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">@Domain.Resources.Messages.Label_Search</button>
+</form>
+
+<p class="text-right">
+    @Html.ActionLink(Domain.Resources.Messages.Label_Create, "Create", null, new { @class = "btn btn-primary" })
+
+</p>
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.ActionLink(Html.DisplayNameFor(us => us.First().FirstName).ToHtmlString(), "Index", new { sortOrder = ViewBag.FirstNameSortParm, Keywords = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink(Html.DisplayNameFor(us => us.First().SecondName).ToHtmlString(), "Index", new { sortOrder = ViewBag.SecondSortParm, Keywords = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink(Html.DisplayNameFor(us => us.First().UserName).ToHtmlString(), "Index", new { sortOrder = ViewBag.UserSortParm, Keywords = ViewBag.CurrentFilter })
+            </th>
+            <td>@Html.DisplayNameFor(us => us.First().Email)</td>
+            <td>@Html.DisplayNameFor(us => us.First().Url)</td>
+            <th>
+                @Html.ActionLink(Html.DisplayNameFor(us => us.First().DateOfBirth).ToHtmlString(), "Index", new { sortOrder = ViewBag.DateSortParm, Keywords = ViewBag.CurrentFilter })
+            </th>           
+            <td>@Domain.Resources.Messages.Label_GeneralDelete</td>
+            <td>@Domain.Resources.Messages.Label_GeneralEdit</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var u in Model)
+        {
+            <tr>
+              
+                <td>@Html.DisplayFor(us => u.FirstName)</td>
+                <td>@Html.DisplayFor(us => u.SecondName)</td>
+                <td>@Html.DisplayFor(us => u.UserName)</td>
+                <td>@Html.DisplayFor(us => u.Email)</td>
+                <td>@Html.DisplayFor(us => u.Url)</td>
+                <td>@Html.DisplayFor(us => u.DateOfBirth)</td>
+                <td>@Html.ActionLink(Domain.Resources.Messages.Label_GeneralDelete, "Delete", new { u.Id })</td>
+                <td>@Html.ActionLink(Domain.Resources.Messages.Label_GeneralEdit, "Edit", new { u.Id })</td>
+               
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+<br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort , Keywords = ViewBag.CurrentFilter }))

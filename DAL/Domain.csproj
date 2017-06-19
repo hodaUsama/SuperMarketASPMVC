@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{13B6C216-05BD-40B4-A5A1-6A229FF9EBA6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Domain</RootNamespace>
+    <AssemblyName>Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Annotation\City.cs" />
+    <Compile Include="Annotation\Country.cs" />
+    <Compile Include="Annotation\Employee.cs" />
+    <Compile Include="Annotation\FormAccess.cs" />
+    <Compile Include="Annotation\Office.cs" />
+    <Compile Include="Annotation\JobTitle.cs" />
+    <Compile Include="Annotation\FormInfo.cs" />
+    <Compile Include="Annotation\Role.cs" />
+    <Compile Include="Annotation\State.cs" />
+    <Compile Include="Annotation\User.cs" />
+    <Compile Include="City.cs">
+      <DependentUpon>SuperMarketContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Country.cs">
+      <DependentUpon>SuperMarketContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>SuperMarketContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.cs">
+      <DependentUpon>SuperMarketContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormAccess.cs">
+      <DependentUpon>SuperMarketContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormInfo.cs">
+      <DependentUpon>SuperMarketContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JobTitle.cs">
+      <DependentUpon>SuperMarketContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Office.cs">
+      <DependentUpon>SuperMarketContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Order.cs">
+      <DependentUpon>SuperMarketContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDetail.cs">
+      <DependentUpon>SuperMarketContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.cs">
+      <DependentUpon>SuperMarketContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>SuperMarketContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductLine.cs">
+      <DependentUpon>SuperMarketContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Messages.ar.Designer.cs">
+      <DependentUpon>Messages.ar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>SuperMarketContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CityService.cs" />
+    <Compile Include="Services\CountryService.cs" />
+    <Compile Include="Services\CustomerService.cs" />
+    <Compile Include="Services\EmployeeService.cs" />
+    <Compile Include="Services\FormAccessService.cs" />
+    <Compile Include="Services\FormInfoService.cs" />
+    <Compile Include="Services\IRepository.cs" />
+    <Compile Include="Services\JobTitleService.cs" />
+    <Compile Include="Services\OfficeService.cs" />
+    <Compile Include="Services\OrderDetailService.cs" />
+    <Compile Include="Services\OrderService.cs" />
+    <Compile Include="Services\Repository.cs" />
+    <Compile Include="Services\RoleServices.cs" />
+    <Compile Include="Services\StateService.cs" />
+    <Compile Include="Services\UserServices.cs" />
+    <Compile Include="State.cs">
+      <DependentUpon>SuperMarketContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SuperMarketContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SuperMarketContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SuperMarketContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SuperMarketContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SuperMarketContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SuperMarketContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>SuperMarketContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>SuperMarketContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validator.cs" />
+    <Compile Include="Vendor.cs">
+      <DependentUpon>SuperMarketContext.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <EntityDeploy Include="SuperMarketContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SuperMarketContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="SuperMarketContext.edmx.diagram">
+      <DependentUpon>SuperMarketContext.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SuperMarketContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SuperMarketContext.edmx</DependentUpon>
+      <LastGenOutput>SuperMarketContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SuperMarketContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SuperMarketContext.edmx</DependentUpon>
+      <LastGenOutput>SuperMarketContext.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Messages.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.ar.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Messages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

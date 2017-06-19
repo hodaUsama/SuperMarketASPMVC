@@ -1,0 +1,37 @@
+﻿@model RoleViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>@Domain.Resources.Messages.Label_Create</h2>
+
+<form  method="post">
+    <div class="form-group">
+        @Html.LabelFor(AllModel => AllModel._Role.Name)
+        @Html.EditorFor(AllModel => AllModel._Role.Name, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(AllModel => AllModel._Role.Name, null, new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(AllModel => AllModel._Role.Description)
+        @Html.EditorFor(AllModel => AllModel._Role.Description, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(AllModel => AllModel._Role.Description, null, new { @class = "text-danger" })
+    </div>
+    <div>
+
+        @for (int i = 0; i < Model.Users.Count; i++)
+        {
+            var checkBoxId = "chk" + Model.Users[i].ID;
+
+            @Html.CheckBoxFor(m => m.Users[i].Selected)
+            @Html.HiddenFor(m => m.Users[i].ID)
+            @Html.LabelFor(m => m.Users[i].Selected,Model.Users[i].Name)
+            <br />
+        }
+
+        </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-primary" });
+</form>

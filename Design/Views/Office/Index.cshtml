@@ -1,0 +1,74 @@
+﻿@model PagedList.IPagedList<Domain.Office>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = Domain.Resources.Messages.Label_Index; 
+}
+
+<h2>@Domain.Resources.Messages.Label_Index</h2>
+
+<form method="GET" class="form-inline">
+    <div class="form-group">
+
+        <div class="input-group">
+            <input type="text" autocomplete="off" id="txtautocomplet" class="form-control" name="Keywords"
+                   dataautocomplete="@Url.Action("QuickSearch")" placeholder="@Domain.Resources.Messages.Label_SearchToolTip">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">@Domain.Resources.Messages.Label_Search</button>
+</form>
+
+<p class="text-right">
+    @Html.ActionLink(Domain.Resources.Messages.Label_Create, "Create", null, new { @class = "btn btn-primary" })
+
+</p>
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>
+                @Html.ActionLink(Html.DisplayNameFor(offc => offc.First().OfficeCode).ToHtmlString(), "Index", new { sortOrder = ViewBag.OfficeCodeSortParm, Keywords = ViewBag.CurrentFilter })
+            </td>
+            <td>
+                @Html.ActionLink(Html.DisplayNameFor(offc => offc.First().Country).ToHtmlString(), "Index", new { sortOrder = ViewBag.CountrySortParm, Keywords = ViewBag.CurrentFilter })
+            </td>
+            <td>
+                @Html.ActionLink(Html.DisplayNameFor(offc => offc.First().City).ToHtmlString(), "Index", new { sortOrder = ViewBag.CitySortParm, Keywords = ViewBag.CurrentFilter })
+            </td>
+            <td>
+                @Html.ActionLink(Html.DisplayNameFor(offc => offc.First().State).ToHtmlString(), "Index", new { sortOrder = ViewBag.StateSortParm, Keywords = ViewBag.CurrentFilter })
+            </td>
+
+            <td>@Html.DisplayNameFor(offc => offc.First().Phone)</td>
+            <td>@Html.DisplayNameFor(offc => offc.First().PostalCode)</td>
+
+            <td>@Domain.Resources.Messages.Label_GeneralDelete</td>
+            <td>@Domain.Resources.Messages.Label_GeneralEdit</td>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var r in Model)
+        {
+            <tr>
+
+                <td>@Html.DisplayFor(offc => r.OfficeCode)</td>
+                <td>@Html.DisplayFor(offc => r.Country1.Name)</td>
+                <td>@Html.DisplayFor(offc => r.City1.Name)</td>
+                <td>@Html.DisplayFor(offc => r.State1.Name)</td>
+                <td>@Html.DisplayFor(offc => r.Phone)</td>
+                <td>@Html.DisplayFor(offc => r.PostalCode)</td>
+                <td>@Html.ActionLink(Domain.Resources.Messages.Label_GeneralDelete, "Delete", new { r.Id })</td>
+                <td>@Html.ActionLink(Domain.Resources.Messages.Label_GeneralEdit, "Edit", new { r.Id })</td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, Keywords = ViewBag.CurrentFilter }))

@@ -1,0 +1,22 @@
+﻿@model Domain.JobTitle
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>@Domain.Resources.Messages.Label_Create</h2>
+
+<form method="post">
+    <div class="form-group">
+        @Html.LabelFor(titl => titl.JobTitle1)
+        @Html.EditorFor(titl => titl.JobTitle1, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(titl => titl.JobTitle1, null, new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(titl => titl.JobDescription, new { @class = "" })
+        @Html.EditorFor(titl => titl.JobDescription, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(titl => titl.JobDescription, null, new { @class = "text-danger" })
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-primary" });
+</form>
+
